@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook</title>
+  <!-- MDB CSS CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.0/mdb.min.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="facebook.css">
+  
+  
+  
+  
+  <style>
+    body {
+      background-color: #1d1f21;
+      margin: 0;
+      padding: 0;
+    }
+    /* خانة البحث مخفية في البداية */
+    #search-container {
+      display: none;
+      background-color: #343940;
+      padding: 8px 15px;
+    }
+    /* قائمة منسدلة بسيطة تظهر لما نضغط على زرار الـ Plus أو الماسنجر */
+    .custom-dropdown {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 15px;
+      background-color: #343940;
+      border: 1px solid #1d1f21;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px #1d1f21(0,0,0,0.3);
+      z-index: 1000;
+      width: 200px;
+      padding: 10px;
+    }
+    .custom-dropdown a {
+      display: block;
+      color: #e4e6eb;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+    .custom-dropdown a:hover {
+      background-color: #1d1f21;
+    }
+  </style>
+</head>
+
+
+
+<body class="position-relative">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand bg-#1d1f21 px-3 py-2">
+    <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
+      
+      <!-- Left: Facebook text -->
+      <a class="navbar-brand fw-bold text-white m-0" href="#" style="font-size: 28px; letter-spacing: -1px; font-family: sans-serif;">
+        facebook
+      </a>
+
+      <!-- Right: Icons (Plus, Search, Messenger) -->
+      <div class="d-flex align-items-center" style="gap: 16px;">
+        <!-- Plus Icon -->
+        <a href="#" class="text-white text-decoration-none" id="plus-btn" style="font-size: 18px;">
+          <i class="fas fa-plus"></i>
+        </a>
+        <!-- Search Icon -->
+        <a href="#" class="text-white text-decoration-none" id="search-btn" style="font-size: 18px;">
+          <i class="fas fa-search"></i>
+        </a>
+        <!-- Messenger Icon with Badge -->
+        <a href="#" class="text-white text-decoration-none position-relative" id="messenger-btn" style="font-size: 18px;">
+          <i class="fab fa-facebook-messenger" style="font-size: 22px;"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 9px; padding: 2px 4px;">
+            9+
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- قوائم تفاعلية صغيرة تظهر لما ندوس على الأيقونات -->
+  <div id="plus-menu" class="custom-dropdown">
+    <a href="#"><i class="fas fa-book-open me-2"></i> Create Story</a>
+    <a href="#"><i class="fas fa-users me-2"></i> Create Group</a>
+  </div>
+
+  <div id="messenger-menu" class="custom-dropdown" style="right: 50px;">
+    <a href="#"> رسالة جديدة من سندس</a>
+    <a href="#">  محادثة مجموعة الكورس البرمجه</a>
+  </div>
+
+  <!-- خانة البحث -->
+  <div id="search-container">
+    <div class="input-group">
+      <span class="input-group-text bg-transparent border-0 text-white"><i class="fas fa-search"></i></span>
+      <input type="text" class="form-control text-white bg-transparent border-0" placeholder="Search Facebook..." style="box-shadow: none;">
+    </div>
+  </div>
+
+  <!-- What's on your mind Section -->
+  <div class="bg-#1d1f21 px-3 py-2 d-flex align-items-center" style="gap: 10px;">
+    <img
+      src="/image 44 amazon /IMG_20241202_234843_008.jpg"
+      class="rounded-circle"
+      height="38"
+      width="38"
+      alt="Avatar"
+      style="object-fit: cover;"
+    />
+    <!-- ضفنا هنا onclick و cursor: pointer عشان يفتح النافذة اول ما تدوسي عليه -->
+    <div onclick="document.getElementById('postModal').style.display='flex'; document.getElementById('postTextarea').focus();" class="flex-grow-1 border rounded-pill py-2 px-3 d-flex align-items-center" style="border-color: white !important; background-color: transparent; cursor: pointer;">
+      <span style="color:white; font-size: 16px;">What's on your mind?</span>
+    </div>
+    <div class="text-success" style="font-size: 20px;">
+      <i class="fas fa-images"></i>
+    </div>
+  </div>
+
+
+  <!-- كود جافاسكريبت عشان يشغل كل الأيقونات -->
+  <script>
+    // زرار البحث
+    const searchBtn = document.getElementById('search-btn');
+    const searchContainer = document.getElementById('search-container');
+    searchBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      searchContainer.style.display = (searchContainer.style.display === 'block') ? 'none' : 'block';
+    });
+
+    // زرار الـ Plus
+    const plusBtn = document.getElementById('plus-btn');
+    const plusMenu = document.getElementById('plus-menu');
+    plusBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      plusMenu.style.display = (plusMenu.style.display === 'block') ? 'none' : 'block';
+      messengerMenu.style.display = 'none'; // نقفل التاني لو مفتوح
+    });
+
+    // زرار الماسنجر
+    const messengerBtn = document.getElementById('messenger-btn');
+    const messengerMenu = document.getElementById('messenger-menu');
+    messengerBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      messengerMenu.style.display = (messengerMenu.style.display === 'block') ? 'none' : 'block';
+      plusMenu.style.display = 'none'; // نقفل التاني لو مفتوح
+    });
+  </script>
+  
+  
+
+  
+  
+  <div class="stories-container">
+  
+  <!-- الستوري الأولى (إنشاء قصة جديدة أو حسابك) -->
+  <div class="story-card">
+    <img src="/image 44 amazon /91a681e94a045db0f7c65a6250eaec39 (2).jpg" class="story-bg" alt="Story"/>
+    <img src="/image 44 amazon /ed44b0c4f03794879c13e936928a7d69.jpg" class="story-avatar" alt="Profile"/>
+    <span class="story-name">Marrium mostafa</span>
+  </div>
+
+  <!-- الستوري الثانية -->
+  <div class="story-card">
+    <img src="/image 44 amazon /e376fa94dc19ea030b37f92a3ca7d879.jpg" class="story-bg" alt="Story"/>
+    <img src="/image 44 amazon /e376fa94dc19ea030b37f92a3ca7d879.jpg" class="story-avatar" alt="Profile"/>
+    <span class="story-name">sara Ahmad</span>
+  </div>
+
+  <!-- الستوري الثالثة -->
+  <div class="story-card">
+    <img src="/image 44 amazon /FB_IMG_1762282466229.jpg" class="story-bg" alt="Story"/>
+    <img src="/image 44 amazon /(whatsapp)55d43c7d1de5402884c49f275b63a2c7.jpg.jpeg" class="story-avatar" alt="Profile"/>
+    <span class="story-name">فاطمة علي</span>
+  </div>
+
+  <!-- الستوري الرابعة (زيدي كما تشائين) -->
+  <div class="story-card">
+    <img src="/image 44 amazon /11-32.jpg" class="story-bg" alt="Story"/>
+    <img src="/image 44 amazon /44f6f22c2c4d9ab57082dfd568a0c259.jpg" class="story-avatar" alt="Profile"/>
+    <span class="story-name">مريم خالد</span>
+  </div>
+
+  <!-- الستوري الخامسة -->
+  <div class="story-card">
+    <img src="/image 44 amazon /e89e6c346aeed5085e277f1d2b2080e1.jpg" class="story-bg" alt="Story"/>
+    <img src="/image 44 amazon /FB_IMG_1763049470967.jpg" class="story-avatar" alt="Profile"/>
+    <span class="story-name">آية محمود</span>
+  </div>
+
+
+
+
+
+  <!--الستوري السادس -->
+  <div class="story-card">
+    <img src="/image 44 amazon /IMG_20241202_234843_008.jpg" class="story-bg" alt="Story"/>
+    <img src="/image 44 amazon /IMG_20241202_234555_320.jpg" class="story-avatar" alt="Profile"/>
+    <span class="story-name">kholoud Tammam</span>
+  </div>
+
+
+
+
+
+  <!--الستوري السابع -->
+  <div class="story-card">
+    <img src="/image 44 amazon /IMG_20240108_235519_318-1.jpg" class="story-bg" alt="Story"/>
+    <img src="/image 44 amazon /IMG_20240414_011501_429-1.jpg" class="story-avatar" alt="Profile"/>
+    <span class="story-name">Rroki Ali</span>
+  </div>
+  
+  
+    <!-- الستوري الثمانية -->
+  <div class="story-card">
+    <img src="/image 44 amazon /IMG_20241202_232247_556.jpg" class="story-bg" alt="Story"/>
+    <img src="/image 44 amazon /FB_IMG_1791036512976.jpg" class="story-avatar" alt="Profile"/>
+    <span class="story-name">gogo mostafa</span>
+  </div>
+  
+  
+  
+    <!--الستوري التاسع -->
+  <div class="story-card">
+    <img src="/image 44 amazon /FB_IMG_1785451903852.jpg" class="story-bg" alt="Story"/>
+    <img src="/image 44 amazon /FB_IMG_1787232707000.jpg" class="story-avatar" alt="Profile"/>
+    <span class="story-name">mostafa said</span>
+  </div>
+  
+  
+  
+  
+    
+    <!--الستوري العاشر -->
+  <div class="story-card">
+    <img src="/image 44 amazon /FB_IMG_1762283283675.jpg" class="story-bg" alt="Story"/>
+    <img src="/image 44 amazon /FB_IMG_1772077479701.jpg" class="story-avatar" alt="Profile"/>
+    <span class="story-name">سندس مصطفى</span>
+  </div>
+
+</div>
+  
+  
+  
+  
+  
+  <!-- نافذة عرض الستوري الكبيرة (Modal) -->
+<div id="storyModal" class="story-modal">
+  <span class="close-modal">&times;</span>
+  <img class="modal-content" id="modalImage" alt="Zoomed Story">
+  <div id="modalCaption" class="modal-caption"></div>
+</div>
+
+<!-- كود الجافاسكربت -->
+<script>
+    const modal = document.getElementById("storyModal");
+    const modalImg = document.getElementById("modalImage");
+    const modalCaption = document.getElementById("modalCaption");
+    const closeBtn = document.querySelector(".close-modal");
+    const storyCards = document.querySelectorAll(".story-card");
+
+    // الكود ده بيمسك الـ 10 ستوريات أوتوماتيك من غير ما تعدلي فيهم حاجة
+    storyCards.forEach(card => {
+      card.addEventListener("click", () => {
+        const imgElement = card.querySelector(".story-bg");
+        const nameElement = card.querySelector(".story-name");
+        
+        // إظهار النافذة
+        modal.style.display = "flex";
+        
+        // نقل صورة الاستوري واسم صاحبتها للنافذة الكبيرة
+        modalImg.src = imgElement.src;
+        modalCaption.textContent = nameElement.textContent;
+      });
+    });
+
+    // زر إغلاق النافذة (X)
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    // لو دوستي في أي مكان فاضي بالأسود تقفل النافذة
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+</script>
+
+
+
+
+
+<!-- نافذة إنشاء منشور جديدة (Post Modal) -->
+<div id="postModal" class="post-modal">
+  <div class="post-modal-content">
+    <div class="post-modal-header">
+      <h3>إنشاء منشور</h3>
+      <span class="close-post-modal">&times;</span>
+    </div>
+    <div class="post-modal-body">
+      <div class="user-info-post">
+        <img src="/image 44 amazon /FB_IMG_1772077479701.jpg" alt="Profile" class="post-user-img">
+        <span>اسمك هنا</span>
+      </div>
+      <!-- خانة الكتابة -->
+      <textarea id="postTextarea" placeholder="ما الذي يجول في خاطرك؟" rows="4"></textarea>
+      <!-- زر نشر -->
+      <button id="publishBtn" class="btn btn-primary w-100 mt-3">نشر</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+      <!-- 1. كود جافاسكربت مكتبة MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+
+    <!-- 2. كود الجافاسكربت (القديم بتاع الستوريات + الجديد بتاع نافذة البوست مع بعض) -->
+    <script>
+        // --- كود الستوريات القديم ---
+        const modal = document.getElementById("storyModal");
+        const modalImg = document.getElementById("modalImage");
+        const modalCaption = document.getElementById("modalCaption");
+        const closeBtn = document.querySelector(".close-modal");
+        const storyCards = document.querySelectorAll(".story-card");
+
+        storyCards.forEach(card => {
+          card.addEventListener("click", () => {
+            const imgElement = card.querySelector(".story-bg");
+            const nameElement = card.querySelector(".story-name");
+            modal.style.display = "flex";
+            modalImg.src = imgElement.src;
+            modalCaption.textContent = nameElement.textContent;
+          });
+        });
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+          });
+        }
+
+        window.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+
+        const avatarLinks = document.querySelectorAll(".story-avatar-link");
+        avatarLinks.forEach(link => {
+          link.addEventListener("click", (e) => {
+            e.stopPropagation();
+          });
+        });
+    </script>
+
+
+
+
+<script>
+    // زرار إغلاق نافذة البوست (علامة X)
+    const closePostBtn = document.querySelector(".close-post-modal");
+    const postModal = document.getElementById("postModal");
+    const publishBtn = document.getElementById("publishBtn");
+    const postTextarea = document.getElementById("postTextarea");
+
+    if (closePostBtn) {
+      closePostBtn.addEventListener("click", () => {
+        postModal.style.display = "none";
+      });
+    }
+
+    // إغلاق النافذة لو دوستي في أي مكان فاضي بره الصندوق
+    window.addEventListener("click", (e) => {
+      if (e.target === postModal) {
+        postModal.style.display = "none";
+      }
+    });
+
+    // زرار النشر
+    if (publishBtn) {
+      publishBtn.addEventListener("click", () => {
+        const postContent = postTextarea.value.trim();
+        if (postContent !== "") {
+          alert("تم نشر بوستك بنجاح: " + postContent);
+          postTextarea.value = "";
+          postModal.style.display = "none";
+        } else {
+          alert("الرجاء كتابة شيء قبل النشر!");
+        }
+      });
+    }
+</script>
+
+
+
+</body> <!-- نهاية الصفحة -->
+</html>

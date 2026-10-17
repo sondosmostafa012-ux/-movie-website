@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkyFlix - Login</title>
+
+    <link rel="stylesheet" href="films.css">
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.2.0/mdb.min.css"
+      rel="stylesheet"
+    />
+    
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
+</head>
+
+<body>
+
+    <div class="login-page">
+
+        <div class="login-card">
+
+            <div class="sky-logo">▶ SkyFlix</div>
+
+            <h1>Welcome Back!</h1>
+
+            <p>Login to continue your journey</p>
+
+
+            <!-- Email -->
+            <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input
+                    type="text"
+                    id="email"
+                    placeholder="Email or username"
+                >
+            </div>
+
+
+            <!-- Password -->
+            <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                >
+            </div>
+
+
+            <button onclick="loginUser()">Login</button>
+
+        </div>
+
+    </div>
+
+
+    <div id="loadingScreen" class="loading-screen">
+
+    <div class="loading-logo">▶ SkyFlix</div>
+
+    <p>Loading...</p>
+
+    <div class="loader"></div>
+
+</div>
+
+
+
+
+
+
+
+<script>
+function loginUser() {
+
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    if (email === "" || password === "") {
+        alert("Please enter your email and password");
+        return;
+    }
+
+    document.getElementById("loadingScreen").style.display = "flex";
+
+    setTimeout(function() {
+        window.location.href = "home.html";
+    }, 2000);
+}
+</script>
+
+</body>
+</html>

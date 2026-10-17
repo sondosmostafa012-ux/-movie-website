@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Movie Details - SkyFlix</title>
+
+    <link rel="stylesheet" href="films.css">
+</head>
+
+<body>
+
+    <div class="movie-details">
+
+        <a href="home.html" class="back-button">← Back to Home</a>
+
+        <h1 id="movieTitle">Movie Name</h1>
+
+        <img
+            id="moviePoster"
+            src=""/images /MV5BMjE2NDkxNTY2M15BMl5BanBnXkFtZTgwMDc2NzE0MTI@._V1_.jpg""
+            alt="Movie Poster"
+            class="details-poster"
+        >
+
+        <p id="movieDescription">
+            Movie description will appear here.
+        </p>
+
+        <p>
+            <strong>Year:</strong>
+            <span id="movieYear">2026</span>
+        </p>
+
+        <p>
+            <strong>Rating:</strong>
+            <span id="movieRating">N/A</span>
+        </p>
+
+        <h2>Movie Trailer 🎬</h2>
+
+        <div class="trailer-container">
+            <iframe
+                id="movieTrailer"
+                src=""
+                title="Movie Trailer"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+const moviesData = {
+    "john-wick": {
+        title: "John Wick",
+        poster: "/images /MV5BMjE2NDkxNTY2M15BMl5BanBnXkFtZTgwMDc2NzE0MTI@._V1_.jpg",
+        description: "A retired hitman returns to the criminal underworld after a personal tragedy.",
+        year: "2014",
+        rating: "7.4",
+        trailer: "https://www.youtube.com/embed/2AUmvWm5ZDQ"
+    },
+
+    "shawshank": {
+        title: "The Shawshank Redemption",
+        poster: "https://image.tmdb.org/t/p/w500/lyQBXzOQSuE59IsHyhrp0qIiPAz.jpg",
+        description: "Two imprisoned men develop a friendship and find hope during their years in prison.",
+        year: "1994",
+        rating: "9.3",
+        trailer: "https://www.youtube.com/embed/6hB3S9bIaco"
+    },
+
+    "green-mile": {
+        title: "The Green Mile",
+        poster: "https://image.tmdb.org/t/p/w500/34nDCQZwaEvsy4CFO5hkGRFDCVU.jpg",
+        description: "A prison guard encounters an unusual prisoner with a mysterious gift, changing the lives of those around him.",
+        year: "1999",
+        rating: "8.6",
+        trailer: "https://www.youtube.com/embed/Ki4haFrqSrw"
+    },
+
+    "pursuit-happyness": {
+        title: "The Pursuit of Happyness",
+        poster: "https://image.tmdb.org/t/p/w500/ltlG4j8Qn1tT8v3X6pW9cZ4sM5k.jpg",
+        description: "A struggling father works hard to build a better future for himself and his young son.",
+        year: "2006",
+        rating: "8.0",
+        trailer: "https://www.youtube.com/embed/DMOBlEcRuw8"
+    },
+
+    "forrest-gump": {
+        title: "Forrest Gump",
+        poster: "https://image.tmdb.org/t/p/w500/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
+        description: "A kind-hearted man experiences remarkable events throughout American history.",
+        year: "1994",
+        rating: "8.8",
+        trailer: "https://www.youtube.com/embed/bLvqoHBptjg"
+    },
+
+    "social-network": {
+        title: "The Social Network",
+        poster: "https://image.tmdb.org/t/p/w500/n0ybibhJtQ5icDqTp8eRytcIHJx.jpg",
+        description: "The story of the creation of Facebook and the conflicts surrounding its founders.",
+        year: "2010",
+        rating: "7.8",
+        trailer: "https://www.youtube.com/embed/lB95KLmpLR4"
+    },
+
+    "princess-mononoke": {
+        title: "Princess Mononoke",
+        poster: "https://image.tmdb.org/t/p/w500/6pZgH10jhpToPcf0uvyTCPFhWpI.jpg",
+        description: "A young warrior becomes involved in a conflict between forest spirits and humans.",
+        year: "1997",
+        rating: "8.3",
+        trailer: "https://www.youtube.com/embed/4OiMOHRDs14"
+    },
+
+    "castle-in-the-sky": {
+        title: "Castle in the Sky",
+        poster: "https://image.tmdb.org/t/p/w500/npOnzAbLh6VOIu3naU5QaEcTepo.jpg",
+        description: "Two young adventurers search for a legendary castle floating in the sky.",
+        year: "1986",
+        rating: "8.0",
+        trailer: "https://www.youtube.com/embed/8ykEy-yPBFc"
+    },
+
+    "ponyo": {
+        title: "Ponyo",
+        poster: "https://image.tmdb.org/t/p/w500/yp8vEZflGynlEylxEesbYasc06i.jpg",
+        description: "A young boy befriends a magical fish who dreams of becoming human.",
+        year: "2008",
+        rating: "7.6",
+        trailer: "https://www.youtube.com/embed/CsR3KVgBzSM"
+    },
+
+    "kikis-delivery-service": {
+        title: "Kiki's Delivery Service",
+        poster: "/images /IMG_903ba2ec-0bc3-4b65-8368-00cfc62e60fe.jpg",
+        description: "A young witch moves to a new town and starts a delivery service.",
+        year: "1989",
+        rating: "7.8",
+        trailer: "https://www.youtube.com/embed/4bG17OYs-GA"
+    },
+
+    "the-boy-and-the-heron": {
+        title: "The Boy and the Heron",
+        poster: "/images /IMG_6cb2d7ac-b508-42f7-bd67-64c88fa8ecfe.jpg",
+        description: "A young boy enters a mysterious world while coping with loss and change.",
+        year: "2023",
+        rating: "7.4",
+        trailer: "https://www.youtube.com/embed/f7EDFdA10pg"
+    },
+
+    "avengers": {
+        title: "The Avengers",
+        poster: "https://image.tmdb.org/t/p/w500/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+        description: "Earth's mightiest heroes unite to stop a dangerous threat.",
+        year: "2012",
+        rating: "8.0",
+        trailer: "https://www.youtube.com/embed/eOrNdBpGMv8"
+    },
+
+    "dark-knight": {
+        title: "The Dark Knight",
+        poster: "/images /IMG_6c0850f6-6fff-442f-905e-a1281b15682a.jpg",
+        description: "Batman faces the Joker, a criminal who brings chaos to Gotham City.",
+        year: "2008",
+        rating: "9.0",
+        trailer: "https://www.youtube.com/embed/EXeTwQWrcwY"
+    },
+
+    "mission-impossible": {
+        title: "Mission: Impossible",
+        poster: "/images /IMG_56ac8c3e-cf1e-436b-9176-a6bd8d8c6c61.jpg",
+        description: "An agent undertakes a dangerous mission filled with suspense and unexpected twists.",
+        year: "1996",
+        rating: "7.2",
+        trailer: "https://www.youtube.com/embed/Ohws8y572KE"
+    },
+
+    "avengers-infinity-war": {
+        title: "Avengers: Infinity War",
+        poster: "https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
+        description: "The Avengers and their allies face Thanos as he seeks powerful cosmic artifacts.",
+        year: "2018",
+        rating: "8.4",
+        trailer: "https://www.youtube.com/embed/6ZfuNTqbHE8"
+    },
+
+    "home-alone": {
+        title: "Home Alone",
+        poster: "/image 44 amazon /kimi-17913854016683625829563146256285.jpeg",
+        description: "A young boy is accidentally left home alone during Christmas and must outsmart two burglars.",
+        year: "1990",
+        rating: "7.7",
+        trailer: "https://www.youtube.com/embed/jEDaVHmw7r4"
+    },
+
+    "the-mask": {
+        title: "The Mask",
+        poster: "/image 44 amazon /kimi-17913852195005556109219394163959.jpeg",
+        description: "A shy bank clerk discovers a magical mask that transforms him into a wild and funny character.",
+        year: "1994",
+        rating: "6.9",
+        trailer: "https://www.youtube.com/embed/LZl69yk5lEY"
+    },
+
+    "zombieland": {
+        title: "Zombieland",
+        poster: "/image 44 amazon /kimi-17913853933977846999863766289650.jpeg",
+        description: "A group of survivors travels through a zombie-filled world while facing dangerous and funny situations.",
+        year: "2009",
+        rating: "7.6",
+        trailer: "https://www.youtube.com/embed/8m9EVP8X7N8"
+    },
+
+    "the-intern": {
+        title: "The Intern",
+        poster: "/images /IMG_fc502423-54f6-443d-89d7-07e8e5704740.jpg",
+        description: "A retired man becomes an intern at an online fashion company and builds an unexpected friendship with its founder.",
+        year: "2015",
+        rating: "7.1",
+        trailer: "https://www.youtube.com/embed/ZU3Xban0Y6A"
+    },
+
+    "secret-life-of-pets": {
+        title: "The Secret Life of Pets",
+        poster: "/images /MV5BMjIzMzA1OTkzNV5BMl5BanBnXkFtZTgwODE3MjM4NzE@._V1_FMjpg_UX1000_.jpg",
+        description: "A group of pets gets into exciting adventures when their owners leave home.",
+        year: "2016",
+        rating: "6.5",
+        trailer: "https://www.youtube.com/embed/i-80SGWfEjM"
+    }
+    
+    
+        ,
+    "harry-potter": {
+        title: "Harry Potter and the Philosopher's Stone",
+        poster: "/images /Harry_Potter_and_the_Philosopher's_Stone_banner (1).jpg",
+        description: "Harry Potter discovers he is a wizard and begins his magical journey at Hogwarts.",
+        year: "2001",
+        rating: "7.7",
+        trailer: "https://www.youtube.com/embed/VyHV0BRtdxo"
+    },
+
+    "your-name": {
+        title: "Your Name",
+        poster: "https://image.tmdb.org/t/p/w500/q719jXXEzOoYaps6babgKnONONX.jpg",
+        description: "Two teenagers mysteriously begin switching lives and try to find each other.",
+        year: "2016",
+        rating: "8.4",
+        trailer: "https://www.youtube.com/embed/xU47nhruN-Q"
+    },
+
+    "spider-man": {
+        title: "Spider-Man: No Way Home",
+        poster: "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+        description: "Peter Parker faces unexpected challenges when his identity becomes public.",
+        year: "2021",
+        rating: "8.2",
+        trailer: "https://www.youtube.com/embed/JfVOs4VSpmA"
+    },
+
+    "inception": {
+        title: "Inception",
+        poster: "https://image.tmdb.org/t/p/w500/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
+        description: "A skilled thief enters people's dreams to carry out a complex mission.",
+        year: "2010",
+        rating: "8.8",
+        trailer: "https://www.youtube.com/embed/YoHD9XEInc0"
+    },
+
+    "interstellar": {
+        title: "Interstellar",
+        poster: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+        description: "Explorers travel beyond Earth in search of a future for humanity.",
+        year: "2014",
+        rating: "8.7",
+        trailer: "https://www.youtube.com/embed/zSWdZVtXT7E"
+    }
+    
+    
+    
+};
+
+
+
+
+
+
+const params = new URLSearchParams(window.location.search);
+const movieId = params.get("movie");
+const movie = moviesData[movieId];
+
+if (movie) {
+    document.getElementById("movieTitle").textContent = movie.title;
+    document.getElementById("moviePoster").src = movie.poster;
+    document.getElementById("movieDescription").textContent = movie.description;
+    document.getElementById("movieYear").textContent = movie.year;
+    document.getElementById("movieRating").textContent = movie.rating;
+    document.getElementById("movieTrailer").src = movie.trailer;
+} else {
+    document.getElementById("movieTitle").textContent = "Movie not found";
+    document.getElementById("movieDescription").textContent =
+        "Please return to the home page and choose a movie.";
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <!-- About SkyFlix -->
+        <div class="footer-about">
+
+            <h2 class="footer-logo">▶ SkyFlix</h2>
+
+            <p>
+                More than just movies...
+                <br>
+                Discover stories and enjoy cinema.
+            </p>
+
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="X">X</a>
+                <a href="#" aria-label="Instagram">◎</a>
+                <a href="#" aria-label="YouTube">▶</a>
+            </div>
+
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links">
+
+            <h3>Quick Links</h3>
+
+            <a href="home.html">Home</a>
+            <a href="home.html#drama">Drama</a>
+            <a href="home.html#anime">Anime</a>
+            <a href="home.html#action">Action</a>
+            <a href="home.html#comedy">Comedy</a>
+
+        </div>
+
+        <!-- Help -->
+        <div class="footer-help">
+
+            <h3>Help</h3>
+
+            <a href="#help">FAQ</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="mailto:info@skyflix.com">Contact Us</a>
+
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-newsletter">
+
+            <h3>Get Our Newsletter</h3>
+
+            <p>
+                Stay updated with the latest movies and news!
+            </p>
+
+            <form class="newsletter-form"
+                  onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+
+                <input
+                    type="email"
+                    placeholder="Enter your email"
+                    aria-label="Your email"
+                    required
+                >
+
+                <button type="submit">Subscribe</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+
+        <p>© 2026 SkyFlix. All rights reserved.</p>
+
+    </div>
+
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,857 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+/* خلفية صفحة Login */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #e5faff,
+        #9edcf5
+    );
+
+    padding: 20px;
+}
+
+
+/* كارت تسجيل الدخول */
+.login-card {
+    width: 100%;
+    max-width: 390px;
+
+    background: white;
+    padding: 35px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 15px 40px rgba(0, 80, 120, 0.18);
+
+    text-align: center;
+}
+
+
+/* اللوجو */
+.sky-logo {
+    color: #17649b;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.sky-logo::first-letter {
+    color: #2196e5;
+}
+
+
+/* العنوان */
+.login-card h1 {
+    color: #17486b;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+
+/* النص */
+.login-card p {
+    color: #6d8795;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+
+/* الخانات */
+.login-card input {
+    width: 100%;
+    padding: 13px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #d5e5ec;
+    border-radius: 8px;
+
+    outline: none;
+    font-size: 14px;
+}
+
+
+/* عند الضغط على الخانة */
+.login-card input:focus {
+    border-color: #55b9e8;
+}
+
+
+/* زر Login */
+.login-card button {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: linear-gradient(
+        90deg,
+        #4b91f1,
+        #65a9ff
+    );
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* تأثير بسيط على الزر */
+.login-card button:hover {
+    transform: translateY(-2px);
+}
+
+
+
+.input-box {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-box i {
+    position: absolute;
+    left: 15px;
+    top: 14px;
+    color: #55a9d1;
+}
+
+.input-box input {
+    padding-left: 42px;
+    margin-bottom: 0;
+}
+
+
+
+
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #e5faff, #9edcf5);
+}
+
+.loading-logo {
+    font-size: 38px;
+    font-weight: bold;
+    color: #17649b;
+    margin-bottom: 15px;
+}
+
+.loading-screen p {
+    color: #315b70;
+}
+
+.loader {
+    width: 45px;
+    height: 45px;
+
+    border: 4px solid #c7eaf8;
+    border-top: 4px solid #278ed0;
+
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Navbar */
+
+.navbar {
+    height: 70px;
+    padding: 0 6%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: white;
+
+    box-shadow: 0 3px 15px rgba(0, 100, 150, 0.12);
+}
+
+.logo {
+    color: #17649b;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #315b70;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: #2196e5;
+}
+
+.profile {
+    font-size: 22px;
+    color: #17649b;
+}
+
+
+
+
+
+
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    border: 1px solid #d5e5ec;
+    border-radius: 20px;
+    padding: 5px 12px;
+}
+
+.search input {
+    width: 100px;
+    border: none;
+    outline: none;
+}
+
+
+
+
+
+.hero {
+    min-height: 430px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 60px 7%;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #07558a 0%,
+            rgba(7, 85, 138, 0.75) 45%,
+            rgba(7, 85, 138, 0.15) 100%
+        ),
+        url("https://image.tmdb.org/t/p/original/q719jXXEzOoYaps6babgKnONONX.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 500px;
+}
+
+.movie-type {
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin: 10px 0;
+}
+
+.movie-info {
+    font-weight: bold;
+}
+
+.movie-description {
+    line-height: 1.7;
+}
+
+.watch-btn {
+    border: none;
+    padding: 13px 25px;
+    border-radius: 25px;
+
+    background: white;
+    color: #17649b;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.watch-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+
+
+
+
+
+
+.popular {
+    padding: 45px 7%;
+    background: #f5fcff;
+}
+
+.popular h2 {
+    color: #17486b;
+    margin-bottom: 25px;
+}
+
+.movie-list {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+}
+
+.movie-card {
+    min-width: 180px;
+}
+
+.movie-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.movie-card h3 {
+    color: #315b70;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Movie Details Page */
+
+.movie-details {
+    background: #f5fcff;
+    color: #315b70;
+    min-height: 100vh;
+    padding: 35px 7%;
+    text-align: center;
+}
+
+.back-button {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(90deg, #17649b, #2196e5);
+    padding: 12px 24px;
+    border-radius: 25px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 100, 150, 0.2);
+}
+
+.movie-details h1 {
+    color: #17486b;
+    font-size: 36px;
+    margin-bottom: 25px;
+}
+
+.details-poster {
+    width: 240px;
+    max-width: 100%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 25px rgba(0, 80, 120, 0.15);
+}
+
+#movieDescription {
+    max-width: 700px;
+    margin: 20px auto;
+    color: #315b70;
+    line-height: 1.9;
+    font-size: 17px;
+}
+
+.movie-details p {
+    margin: 15px 0;
+    color: #315b70;
+}
+
+.movie-details h2 {
+    color: #17486b;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+.trailer-container {
+    max-width: 800px;
+    margin: 20px auto;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 80, 120, 0.15);
+}
+
+.trailer-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media (max-width: 600px) {
+    .movie-details {
+        padding: 25px 15px;
+    }
+
+    .movie-details h1 {
+        font-size: 27px;
+    }
+
+    .details-poster {
+        width: 190px;
+    }
+
+    #movieDescription {
+        font-size: 15px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== SkyFlix Footer ===== */
+
+.footer {
+    background: linear-gradient(
+        135deg,
+        #e5faff,
+        #b8e8fa,
+        #dff5ff
+    );
+
+    color: #17486b;
+    padding: 40px 25px 20px;
+    margin-top: 40px;
+
+    border-top: 2px solid #9edcf5;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Footer Content */
+
+.footer-content {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        0.8fr
+        1fr
+        1.5fr;
+
+    gap: 35px;
+
+    max-width: 1200px;
+    margin: 0 auto;
+
+    padding: 20px 0 35px;
+}
+
+
+/* Footer Columns */
+
+.footer-about,
+.footer-links,
+.footer-help,
+.footer-newsletter {
+    min-width: 0;
+}
+
+
+/* SkyFlix Logo */
+
+.footer-logo {
+    color: #17649b;
+    font-size: 30px;
+    font-weight: bold;
+
+    margin: 0 0 15px;
+    letter-spacing: 0.5px;
+}
+
+
+/* Footer Headings */
+
+.footer h3 {
+    color: #17486b;
+    font-size: 17px;
+    font-weight: bold;
+
+    margin: 5px 0 20px;
+}
+
+
+/* Footer Paragraphs */
+
+.footer p {
+    color: #52768b;
+    font-size: 13px;
+    line-height: 1.9;
+
+    margin: 0 0 15px;
+}
+
+
+/* Footer Links */
+
+.footer-links a,
+.footer-help a {
+    display: block;
+    width: fit-content;
+
+    color: #315b70;
+    text-decoration: none;
+
+    font-size: 13px;
+    margin-bottom: 12px;
+
+    transition: 0.3s ease;
+}
+
+
+/* Links Hover */
+
+.footer-links a:hover,
+.footer-help a:hover {
+    color: #2196e5;
+    transform: translateX(4px);
+}
+
+
+/* Social Icons */
+
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-top: 20px;
+}
+
+.footer-social a {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #17649b,
+        #4b91f1
+    );
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: 0.3s ease;
+}
+
+.footer-social a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(23, 100, 155, 0.2);
+}
+
+
+/* Newsletter */
+
+.newsletter-form {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    max-width: 330px;
+
+    background: white;
+    border: 1px solid #c5e5f2;
+    border-radius: 25px;
+
+    padding: 4px;
+
+    box-shadow: 0 4px 12px rgba(23, 100, 155, 0.08);
+}
+
+
+/* Newsletter Input */
+
+.newsletter-form input {
+    flex: 1;
+    min-width: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    padding: 10px;
+    font-size: 12px;
+    color: #17486b;
+}
+
+.newsletter-form input::placeholder {
+    color: #829eae;
+}
+
+
+/* Subscribe Button */
+
+.newsletter-form button {
+    border: none;
+    border-radius: 20px;
+
+    padding: 10px 14px;
+
+    background: linear-gradient(
+        90deg,
+        #4b91f1,
+        #65a9ff
+    );
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(23, 100, 155, 0.2);
+}
+
+
+/* Copyright */
+
+.footer-bottom {
+    max-width: 1200px;
+
+    margin: 0 auto;
+    padding-top: 18px;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(23, 100, 155, 0.15);
+}
+
+.footer-bottom p {
+    color: #64869a;
+    font-size: 12px;
+    margin: 0;
+}
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+    .footer-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px;
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .footer {
+        padding: 30px 20px 18px;
+        margin-top: 30px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 28px;
+
+        padding-bottom: 25px;
+    }
+
+    .footer-about,
+    .footer-links,
+    .footer-help,
+    .footer-newsletter {
+        width: 100%;
+    }
+
+    .footer-logo {
+        font-size: 27px;
+    }
+
+    .footer h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .footer p {
+        font-size: 13px;
+    }
+
+    .footer-social {
+        gap: 10px;
+    }
+
+    .footer-links a:hover,
+    .footer-help a:hover {
+        transform: none;
+    }
+
+    .newsletter-form {
+        max-width: 100%;
+    }
+
+    .newsletter-form input {
+        font-size: 12px;
+    }
+
+    .newsletter-form button {
+        padding: 10px 12px;
+    }
+
+    .footer-bottom p {
+        font-size: 11px;
+    }
+
+}
+
+
+
+
+
+
+
+
+/* Responsive Navbar and Hero */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        height: auto;
+        min-height: 70px;
+        padding: 15px 4%;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .nav-right {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .search input {
+        width: 85px;
+    }
+
+    .hero {
+        min-height: 350px;
+        padding: 40px 5%;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+        overflow-wrap: anywhere;
+    }
+
+    .popular {
+        padding: 30px 5%;
+    }
+
+    .movie-card {
+        min-width: 160px;
+    }
+
+    .movie-card img {
+        height: 230px;
+    }
+}

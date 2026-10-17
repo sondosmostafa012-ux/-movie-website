@@ -1,0 +1,492 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: black;
+  font-family: sans-serif; /* تم تصحيحها من font-size إلى font-family */
+}
+
+/* تصحيح الهيدر والناف بار */
+header {
+  background-color: #111;
+  width: 100%;
+  height: 90px; 
+  padding: 0 5%;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.nav1 {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.nav1 > h1 {
+  color:  #20c997;
+  font-size: 28px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.nav1 > p {
+  color: white;
+  font-size: 6px;
+  text-align: center;
+  letter-spacing: 2px;
+  transform: translate(7px, 0px);
+}
+
+/* تنسيق الروابط بجانب بعضها */
+.nav2 {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav2 > a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 5px 8px;
+  transition: 0.3s;
+}
+
+.nav2 > a:hover {
+  background-color: aqua;
+  color: black;
+}
+
+.nav2 > a > i {
+  color: aquamarine;
+}
+
+/* قسم الـ Profile وتجنب التداخل مع الهيدر الثابت */
+.profile {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  align-items: center;
+  padding-top: 90px; /* مسافة تساوي ارتفاع الهيدر عشان المحتوى مايدخلش تحته */
+  padding-left: 8%;
+}
+
+.photo {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  height: 90%;
+  background: radial-gradient(circle at 85% 20%, rgba(0, 139, 139, 0.5) 0%, #000000 70%); 
+}
+
+.photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+  mix-blend-mode: screen;
+}
+
+.hero {
+  position: relative;
+  max-width: 50%;
+  display: flex;
+  color: #fff;
+  z-index: 10;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.brand-caption {
+  color:  #20c997; 
+  font-size: 14px;
+  display: block;
+  margin-bottom: 12px;
+  letter-spacing: 4px;
+}
+
+/* تم إزالة المسافة الخاطئة في اسم الكلاس */
+.page-title {
+  color: #fff;
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.high {
+  color:  #20c997;
+}
+
+.line {
+  width: 60px;
+  height: 3px;
+  background-color:  #20c997; 
+  margin-top: 15px;
+  margin-bottom: 20px; 
+  border-radius: 2px;
+}
+
+.description {
+  color: #a0a0a0;
+  font-size: 14px;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  width: 80%;
+  display: block;
+}
+
+.power-button {
+  display: flex;
+  margin-top: 25px;
+  gap: 15px;
+  position: relative;
+  align-items: center;
+  z-index: 20;
+}
+
+.play-btn {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  background-color:  #20c997; 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+  background-color:  #20c997; 
+  color: #000;
+  box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+}
+
+.btn-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.intro-caption {
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px; 
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.sub-banner-text {
+  color: #008b8b;
+  font-size: 10px;
+}
+
+/* تنسيق القسم الرئيسي */
+.sec {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 70px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.left-content {
+  flex: 1;
+  max-width: 450px;
+}
+
+.bot-title {
+  color: #20c997;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.title span {
+  color: #20c997;
+}
+
+.line {
+  width: 60px;
+  height: 3px;
+  background-color: #20c997;
+  margin-bottom: 25px;
+}
+
+.description {
+  color: #999999;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+/* تنسيق زر VIEW ALL */
+.view-btn {
+  display: inline-block;
+  background-color: #20c997;
+  color: #0b0b0b;
+  padding: 12px 30px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.view-btn:hover {
+  background-color: #17a07b;
+}
+
+/* تنسيق شبكة الكروت (القسم الأيمن) */
+.services-grid {
+  flex: 1.2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* تنسيق الكارت الفردي العادي */
+.text {
+  background-color: #0e0e0e;
+  border: 1px solid #1a1a1a;
+  padding: 35px 25px;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.text:hover {
+  border-color: #20c997;
+  transform: translateY(-5px);
+}
+
+/* الكارت المميز في أعلى اليمين (Website Design) */
+.highlight-card {
+  background: linear-gradient(180deg, rgba(32, 201, 151, 0.18) 0%, rgba(14, 14, 14, 0.95) 100%);
+  border-color: #20c997;
+}
+
+/* أيقونة الكارت */
+.mag img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+/* عنوان الكارت */
+.word {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+/* وصف الكارت */
+.desc {
+  color: #777777;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* التجاوب مع الشاشات الصغيرة (Responsive) */
+@media (max-width: 900px) {
+  .sec {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .services-grid {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.about-us {
+  background-color: #0b0b0b;
+  color: #fff;
+  padding: 80px 20px;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.box img {
+  width: 400px;
+  border-radius: 8px;
+}
+
+.some {
+  color: #00d2aa;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.name {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.name span {
+  color: #00d2aa;
+}
+
+.line {
+  width: 50px;
+  height: 3px;
+  background-color: #00d2aa;
+  margin-bottom: 20px;
+}
+
+.description {
+  color: #999;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* تنسيق الميزتين بجانب بعضهما */
+.features-row {
+  display: flex;
+  gap: 30px;
+}
+
+.feature-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.feature-item img {
+  width: 35px;
+  height: 35px;
+}
+
+.tag {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.desc {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.4;
+}
+
+
+/* تنسيق السكشن الرئيسي والخلفية المتدرجة مع الصورة الجانبية */
+.stats-section {
+  position: relative;
+  background-color: #0d1b1a; /* لون خلفية داكن يتماشى مع التصميم */
+  background-image: url('/images /1.jpg'); /* استبدل هذا المسار بصورة الوجه الظاهرة في الخلفية إن أردت، أو اتركه للون الداكن */
+  background-size: cover;
+  background-position: right center;
+  padding: 80px 20px;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+/* طبقة التعتيم (Overlay) لدمج الخلفية وتغميقها */
+.stats-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(11, 26, 25, 0.95) 40%, rgba(11, 26, 25, 0.7) 100%);
+  z-index: 1;
+}
+
+/* الحاوية لتنظيم العناصر بجانب بعضها البعض باستخدام Flexbox */
+.stats-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* تنسيق العنصر الفردي داخل الـ Stats */
+.stat-item {
+  text-align: center;
+  color: #fff;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* تنسيق الأيقونة */
+.stat-icon {
+  margin-bottom: 15px;
+}
+
+.stat-icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  /* إذا كانت الأيقونات الأصلية ملونة وتريد جعلها بلون قريب من الـ Mint Green كالصورة، يمكنك استخدام فلتر، أو تركها كما هي إذا كانت بنفس اللون */
+  filter: brightness(0) saturate(100%) invert(77%) sepia(21%) saturate(762%) hue-rotate(115deg) brightness(94%) contrast(88%);
+}
+
+/* تنسيق الأرقام */
+.stat-number {
+  font-size: 38px;
+  font-weight: 700;
+  color: #4ee1c7; /* لون الأخضر الفاتح (Mint) الموجود في الصورة */
+  margin: 0 0 8px 0;
+}
+
+/* تنسيق النص التوضيحي أسفل الرقم */
+.stat-label {
+  font-size: 14px;
+  color: #b0c4de; /* لون رمادي فاتح مائل للزرقة قليلاً */
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amazon</title>
+  
+  <!-- روابط Bootstrap 5 و FontAwesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #eaeded !important;
+    }
+    .amazon-header {
+      background-color: #131921 !important;
+    }
+    .amazon-sub-header {
+      background-color: #232f3e !important;
+    }
+    .amazon-location-bar {
+      background-color: #37475a !important;
+    }
+    /* تصميم كلمة أمازون مع السهم البرتقالي */
+    .amazon-logo-container {
+      display: inline-block;
+      position: relative;
+      text-align: center;
+    }
+    .amazon-smile {
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+    }
+    .scrollable-nav::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollable-nav {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- الهيدر الرئيسي -->
+  <header class="amazon-header text-white py-2 px-3">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      
+      <!-- اليمين: زر القائمة ولوجو أمازون والسهم تحته -->
+      <div class="d-flex align-items-center">
+        <button class="btn text-white p-0 fs-3 border-0 me-2" type="button">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="amazon-logo-container">
+          <a class="fw-bold fs-3 text-white m-0 text-decoration-none d-block" href="#">amazon<span style="color: #febd69;">.eg</span></a>
+          <svg class="amazon-smile" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 2C30 18 70 18 98 2" stroke="#febd69" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- اليسار: عربة التسوق وتسجيل الدخول -->
+      <div class="d-flex align-items-center">
+        <a href="#" class="text-white text-decoration-none fs-6 d-flex align-items-center me-3">
+          <i class="fas fa-user fs-5 me-1"></i> تسجيل الدخول <span class="ms-1">،</span>
+        </a>
+        <a href="#" class="text-white text-decoration-none position-relative">
+          <i class="fas fa-shopping-cart fs-4"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark" style="font-size: 9px;">0</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- شريط البحث -->
+    <div class="container-fluid mt-2">
+      <form class="d-flex w-100">
+        <input class="form-control rounded-end-0 border-0 py-2 text-end" type="search" placeholder="بحث في Amazon.eg" aria-label="Search" style="background-color: #fff;">
+        <button class="btn btn-warning rounded-start-0 border-0 px-3" type="submit">
+          <i class="fas fa-search text-dark fs-5"></i>
+        </button>
+      </form>
+    </div>
+  </header>
+
+  <!-- الشريط الفرعي للأقسام -->
+  <nav class="amazon-sub-header text-white py-2 px-2">
+    <div class="container-fluid overflow-auto scrollable-nav">
+      <ul class="nav flex-row flex-nowrap align-items-center" style="font-size: 14px; white-space: nowrap;">
+        <li class="nav-item me-3"><a class="nav-link text-white p-1" href="#">الأجهزة المنزلية</a></li>
+        <li class="nav-item me-3"><a class="nav-link text-white p-1" href="#">السوبر ماركت</a></li>
+        <li class="nav-item me-3"><a class="nav-link text-white p-1" href="#">برايم</a></li>
+        <li class="nav-item me-3"><a class="nav-link text-white p-1" href="#">مستلزمات المنزل</a></li>
+        <li class="nav-item me-3"><a class="nav-link text-white p-1" href="#">الإلكترونيات</a></li>
+        <li class="nav-item me-3"><a class="nav-link text-white p-1" href="#">الموضة</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- شريط الموقع -->
+  <div class="amazon-location-bar text-white px-3 py-2 d-flex align-items-center justify-content-between" style="font-size: 13px;">
+    <div class="d-flex align-items-center">
+      <i class="fas fa-map-marker-alt me-2 text-white"></i>
+      <span>التوصيل إلى New Cairo City - تحديث الموقع</span>
+    </div>
+    <i class="fas fa-chevron-down fa-xs"></i>
+  </div>
+
+  <!-- السلايدر الخاص بالمنتجات -->
+  <div class="container my-3">
+    <div id="productCarousel" class="carousel slide shadow-sm rounded overflow-hidden bg-white" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        
+        <!-- المنتج الأول -->
+        <div class="carousel-item active">
+          <div class="card border-0 text-center p-3">
+            <img src="/image 44/edcde634d71624826664e9787a271935021ccce8_IMG_21440304_m_jpeg_1_94fc77dd_4d31_4ee5_ac1b_13264891db6d.jpg" class="card-img-top mx-auto" alt="iPhone 18 Pro Max" style="max-height: 250px; width: auto; object-fit: contain;" />
+            <div class="card-body bg-white">
+              <h5 class="card-title">iPhone 18 Pro Max</h5>
+              <p class="card-text text-muted">أحدث إصدارات أبل.</p>
+              <a href="#" class="btn btn-warning w-100 fw-bold">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- المنتج الثاني -->
+        <div class="carousel-item">
+          <div class="card border-0 text-center p-3">
+            <img src="/image 44/TopKV_720x768_mobile-copy-8.jpg" class="card-img-top mx-auto" alt="Samsung Galaxy S24 Ultra" style="max-height: 250px; width: auto; object-fit: contain;" />
+            <div class="card-body bg-white">
+              <h5 class="card-title">Samsung Galaxy S24 Ultra</h5>
+              <p class="card-text text-muted">كاميرا خارقة وأداء ممتاز.</p>
+              <a href="#" class="btn btn-warning w-100 fw-bold">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- المنتج الثالث -->
+        <div class="carousel-item">
+          <div class="card border-0 text-center p-3">
+            <img src="/image 44/18acdbe2-dacf-4492-9f52-ed0cc63dacc6.jpg" class="card-img-top mx-auto" alt="Samsung A16" style="max-height: 250px; width: auto; object-fit: contain;" />
+            <div class="card-body bg-white">
+              <h5 class="card-title">Samsung A16</h5>
+              <p class="card-text text-muted">قيمة ممتازة ومواصفات جيدة.</p>
+              <a href="#" class="btn btn-warning w-100 fw-bold">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- المنتج الرابع -->
+        <div class="carousel-item">
+          <div class="card border-0 text-center p-3">
+            <img src="/image 44/pexels-joaquim-xadreque-2160351947-36659007.jpg" class="card-img-top mx-auto" alt="iPhone 17 Pro Max" style="max-height: 250px; width: auto; object-fit: contain;" />
+            <div class="card-body bg-white">
+              <h5 class="card-title">iPhone 17 Pro Max</h5>
+              <p class="card-text text-muted">أداء قوي وتصميم راقي.</p>
+              <a href="#" class="btn btn-warning w-100 fw-bold">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- أزرار التنقل -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+        <span class="visually-hidden">السابق</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+        <span class="visually-hidden">التالي</span>
+      </button>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!-- المحتوى الرئيسي (الجزء الخاص بالمنتجات وصفحة التفاصيل فقط) -->
+  <main class="container my-3">
+
+    <!-- قسم قائمة المنتجات (شبكة جنب بعض) -->
+    <div id="homeView">
+      <div class="row g-2">
+        
+        <!-- هاتف 1 -->
+        <div class="col-6">
+          <div class="product-card h-100 d-flex flex-column justify-content-between bg-white border rounded p-2" style="cursor: pointer;" onclick="showDetails()">
+            <div>
+              <div class="position-relative text-center bg-light p-2 rounded">
+                <img src="https://m.media-amazon.com/images/I/71d7rfSl0wL._AC_SL1500_.jpg" alt="آيفون" class="img-fluid" style="height: 150px; object-fit: contain;">
+                <button class="position-absolute bottom-0 start-0 btn btn-warning rounded-circle shadow-sm m-2 d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;"><i class="fas fa-plus text-dark"></i></button>
+              </div>
+              <p class="mt-2 mb-1 text-dark" style="font-size: 13px; line-height: 1.4;">آبل آيفون برو ماكس، سعة 256 جيجابايت...</p>
+            </div>
+            <div>
+              <div class="fw-bold fs-5 text-dark">65,999 <span style="font-size: 12px; font-weight: normal;">جنيه</span></div>
+              <small class="text-muted" style="font-size: 11px;">تم شراء 1 ألف+ سلعة في الشهر الماضي</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- هاتف 2 -->
+        <div class="col-6">
+          <div class="product-card h-100 d-flex flex-column justify-content-between bg-white border rounded p-2">
+            <div>
+              <div class="position-relative text-center bg-light p-2 rounded">
+                <img src="https://m.media-amazon.com/images/I/61VfL-aiToL._AC_SL1500_.jpg" alt="سامسونج" class="img-fluid" style="height: 150px; object-fit: contain;">
+                <button class="position-absolute bottom-0 start-0 btn btn-warning rounded-circle shadow-sm m-2 d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;"><i class="fas fa-plus text-dark"></i></button>
+              </div>
+              <p class="mt-2 mb-1 text-dark" style="font-size: 13px; line-height: 1.4;">سامسونج جالاكسي ألترا، دعم شبكات 5G...</p>
+            </div>
+            <div>
+              <div class="fw-bold fs-5 text-dark">54,500 <span style="font-size: 12px; font-weight: normal;">جنيه</span></div>
+              <small class="text-muted" style="font-size: 11px;">تم شراء 2 ألف+ سلعة في الشهر الماضي</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- قسم صفحة تفاصيل المنتج (مخفي افتراضياً ويظهر عند النقر على الهاتف الأول) -->
+    <div id="detailsView" class="bg-white p-3 rounded shadow-sm" style="display: none;">
+      <button class="btn btn-sm btn-outline-secondary mb-3" onclick="showHome()"><i class="fas fa-arrow-right"></i> العودة للرئيسية</button>
+      
+      <p class="text-primary small mb-1" style="cursor: pointer;">قم بزيارة متجر Apple</p>
+      <h6 class="fw-bold text-dark" style="font-size: 15px;">آبل آيفون برو ماكس (256 جيجابايت) - لون تيتانيوم طبيعي</h6>
+      
+      <div class="d-flex align-items-center my-2 text-warning" style="font-size: 12px;">
+        <span class="text-dark fw-bold me-1">4.8</span>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <span class="text-primary ms-2">(1,250)</span>
+      </div>
+      
+      <div class="bg-warning text-dark p-1 rounded d-inline-block fw-bold mb-2" style="font-size: 11px;">
+        الأكثر مبيعاً <span class="fw-normal">في الهواتف الذكية</span>
+      </div>
+
+      <div class="text-muted small mb-3">تم شراء 1 ألف+ سلعة في الشهر الماضي</div>
+
+      <!-- صورة المنتج الكبيرة -->
+      <div class="text-center bg-light p-3 rounded mb-3">
+        <img src="https://m.media-amazon.com/images/I/71d7rfSl0wL._AC_SL1500_.jpg" alt="تفاصيل المنتج" class="img-fluid" style="max-height: 300px; object-fit: contain;">
+      </div>
+
+      <hr>
+
+      <!-- السعر -->
+      <div class="mb-3">
+        <span class="fs-2 fw-bold text-dark">65,999</span> <span class="text-muted">جنيه</span>
+        <div class="text-muted" style="font-size: 12px;">الأسعار تشمل ضريبة القيمة المضافة.</div>
+      </div>
+
+      <!-- تفاصيل التوصيل -->
+      <div class="alert alert-light border p-2 mb-3" style="font-size: 13px;">
+        <strong>توصيل مجاني</strong> غداً على طلبك.<br>
+        <span class="text-muted"><i class="fas fa-map-marker-alt"></i> التوصيل إلى New Cairo City - تحديث الموقع</span>
+      </div>
+
+      <!-- أزرار الشراء -->
+      <div class="d-grid gap-2">
+        <button class="btn btn-warning py-2 fw-bold rounded-pill">إضافة إلى عربة التسوق</button>
+        <button class="btn py-2 fw-bold rounded-pill text-dark" style="background-color: #ffa41c;" onclick="alert('تم الانتقال لصفحة الدفع الفوري!')">اشتري الآن</button>
+      </div>
+
+      <div class="mt-3 text-muted" style="font-size: 12px;">
+        <div><strong>الشاحن / البائع:</strong> Amazon.eg</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- سكربت التنقل بين القائمة والتفاصيل -->
+  <script>
+    function showDetails() {
+      document.getElementById('homeView').style.display = 'none';
+      document.getElementById('detailsView').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    function showHome() {
+      document.getElementById('detailsView').style.display = 'none';
+      document.getElementById('homeView').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+
+
+
+
+  <!-- المحتوى الرئيسي (8 منتجات هواتف وصفحة التفاصيل) -->
+  <main class="container my-3">
+
+    <!-- قسم قائمة المنتجات (شبكة 8 منتجات هواتف) -->
+    <div id="homeView">
+      <div class="row g-2">
+        
+        <!-- هاتف 1: آيفون -->
+        <div class="col-6">
+          <div class="product-card h-100 d-flex flex-column justify-content-between bg-white border rounded p-2" style="cursor: pointer;" onclick="showDetails('آبل آيفون 15 برو ماكس (256 جيجابايت)', '65,999', 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80', '1,250', 'متجر Apple')">
+            <div>
+              <div class="position-relative text-center bg-light p-2 rounded">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&auto=format&fit=crop&q=80" alt="آيفون" class="img-fluid" style="height: 150px; object-fit: contain;">
+                <button class="position-absolute bottom-0 start-0 btn btn-warning rounded-circle shadow-sm m-2 d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;"><i class="fas fa-plus text-dark"></i></button>
+              </div>
+              <p class="mt-2 mb-1 text-dark" style="font-size: 13px; line-height: 1.4;">آبل آيفون 15 برو ماكس، 256 جيجابايت...</p>
+            </div>
+            <div>
+              <div class="fw-bold fs-5 text-dark">65,999 <span style="font-size: 12px; font-weight: normal;">جنيه</span></div>
+              <small class="text-muted" style="font-size: 11px;">تم شراء 1 ألف+ سلعة الشهر الماضي</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- هاتف 2: سامسونج -->
+        <div class="col-6">
+          <div class="product-card h-100 d-flex flex-column justify-content-between bg-white border rounded p-2" style="cursor: pointer;" onclick="showDetails('سامسونج جالاكسي S24 ألترا (256 جيجابايت)', '54,500', 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80', '2,100', 'متجر Samsung')">
+            <div>
+              <div class="position-relative text-center bg-light p-2 rounded">
+                <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=300&auto=format&fit=crop&q=80" alt="سامسونج" class="img-fluid" style="height: 150px; object-fit: contain;">
+                <button class="position-absolute bottom-0 start-0 btn btn-warning rounded-circle shadow-sm m-2 d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;"><i class="fas fa-plus text-dark"></i></button>
+              </div>
+              <p class="mt-2 mb-1 text-dark" style="font-size: 13px; line-height: 1.4;">سامسونج جالاكسي S24 ألترا، دعم 5G...</p>
+            </div>
+            <div>
+              <div class="fw-bold fs-5 text-dark">54,500 <span style="font-size: 12px; font-weight: normal;">جنيه</span></div>
+              <small class="text-muted" style="font-size: 11px;">تم شراء 2 ألف+ سلعة الشهر الماضي</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- هاتف 3: شاومي -->
+        <div class="col-6">
+          <div class="product-card h-100 d-flex flex-column justify-content-between bg-white border rounded p-2" style="cursor: pointer;" onclick="showDetails('شاومي ريدمي نوت 13 برو (256 جيجا)', '13,299', 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80', '850', 'متجر Xiaomi')">
+            <div>
+              <div class="position-relative text-center bg-light p-2 rounded">
+                <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=300&auto=format&fit=crop&q=80" alt="شاومي" class="img-fluid" style="height: 150px; object-fit: contain;">
+                <button class="position-absolute bottom-0 start-0 btn btn-warning rounded-circle shadow-sm m-2 d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;"><i class="fas fa-plus text-dark"></i></button>
+              </div>
+              <p class="mt-2 mb-1 text-dark" style="font-size: 13px; line-height: 1.4;">شاومي ريدمي نوت 13 برو، 256 جيجا...</p>
+            </div>
+            <div>
+              <div class="fw-bold fs-5 text-dark">13,299 <span style="font-size: 12px; font-weight: normal;">جنيه</span></div>
+              <small class="text-muted" style="font-size: 11px;">تم شراء 4 آلاف+ سلعة الشهر الماضي</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- هاتف 4: أوبو -->
+        <div class="col-6">
+          <div class="product-card h-100 d-flex flex-column justify-content-between bg-white border rounded p-2" style="cursor: pointer;" onclick="showDetails('اوبو رينو 11، شريحتين (256 جيجابايت)', '18,499', 'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=500&auto=format&fit=crop&q=80', '620', 'متجر Oppo')">
+            <div>
+              <div class="position-relative text-center bg-light p-2 rounded">
+                <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?w=300&auto=format&fit=crop&q=80" alt="أوبو" class="img-fluid" style="height: 150px; object-fit: contain;">
+                <button class="position-absolute bottom-0 start-0 btn btn-warning rounded-circle shadow-sm m-2 d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;"><i class="fas fa-plus text-dark"></i></button>
+              </div>
+              <p class="mt-2 mb-1 text-dark" style="font-size: 13px; line-height: 1.4;">اوبو رينو 11، شريحتين، 256 جيجابايت...</p>
+            </div>
+            <div>
+              <div class="fw-bold fs-5 text-dark">18,499 <span style="font-size: 12px; font-weight: normal;">جنيه</span></div>
+              <small class="text-muted" style="font-size: 11px;">تم شراء 800+ سلعة الشهر الماضي</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- هاتف 5: ريلمي -->
+        <div class="col-6">
+          <div class="product-card h-100 d-flex flex-column justify-content-between bg-white border rounded p-2" style="cursor: pointer;" onclick="showDetails('ريلمي C55، شاشة 90 هرتز (128 جيجا)', '7,777', 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&auto=format&fit=crop&q=80', '940', 'متجر Realme')">
+            <div>
+              <div class="position-relative text-center bg-light p-2 rounded">
+                <img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=300&auto=format&fit=crop&q=80" alt="ريلمي" class="img-fluid" style="height: 150px; object-fit: contain;">
+                <button class="position-absolute bottom-0 start-0 btn btn-warning rounded-circle shadow-sm m-2 d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;"><i class="fas fa-plus text-dark"></i></button>
+              </div>
+              <p class="mt-2 mb-1 text-dark" style="font-size: 13px; line-height: 1.4;">ريلمي C55، شاشة 90 هرتز، 128 جيجا...</p>
+            </div>
+            <div>
+              <div class="fw-bold fs-5 text-dark">7,777 <span style="font-size: 12px; font-weight: normal;">جنيه</span></div>
+              <small class="text-muted" style="font-size: 11px;">تم شراء 5 آلاف+ سلعة الشهر الماضي</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- هاتف 6: إنفينكس -->
+        <div class="col-6">
+          <div class="product-card h-100 d-flex flex-column justify-content-between bg-white border rounded p-2" style="cursor: pointer;" onclick="showDetails('إنفينكس هوت 40 برو (256 جيجابايت)', '8,999', 'https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=500&auto=format&fit=crop&q=80', '430', 'متجر Infinix')">
+            <div>
+              <div class="position-relative text-center bg-light p-2 rounded">
+                <img src="https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=300&auto=format&fit=crop&q=80" alt="إنفينكس" class="img-fluid" style="height: 150px; object-fit: contain;">
+                <button class="position-absolute bottom-0 start-0 btn btn-warning rounded-circle shadow-sm m-2 d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;"><i class="fas fa-plus text-dark"></i></button>
+              </div>
+              <p class="mt-2 mb-1 text-dark" style="font-size: 13px; line-height: 1.4;">إنفينكس هوت 40 برو، 256 جيجابايت...</p>
+            </div>
+            <div>
+              <div class="fw-bold fs-5 text-dark">8,999 <span style="font-size: 12px; font-weight: normal;">جنيه</span></div>
+              <small class="text-muted" style="font-size: 11px;">تم شراء 1.5 ألف+ سلعة الشهر الماضي</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- هاتف 7: هواوي -->
+        <div class="col-6">
+          <div class="product-card h-100 d-flex flex-column justify-content-between bg-white border rounded p-2" style="cursor: pointer;" onclick="showDetails('هواوي نوفا 11i، بشاشة FHD+', '9,500', 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500&auto=format&fit=crop&q=80', '310', 'متجر Huawei')">
+            <div>
+              <div class="position-relative text-center bg-light p-2 rounded">
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=300&auto=format&fit=crop&q=80" alt="هواوي" class="img-fluid" style="height: 150px; object-fit: contain;">
+                <button class="position-absolute bottom-0 start-0 btn btn-warning rounded-circle shadow-sm m-2 d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;"><i class="fas fa-plus text-dark"></i></button>
+              </div>
+              <p class="mt-2 mb-1 text-dark" style="font-size: 13px; line-height: 1.4;">هواوي نوفا 11i، بشاشة FHD+...</p>
+            </div>
+            <div>
+              <div class="fw-bold fs-5 text-dark">9,500 <span style="font-size: 12px; font-weight: normal;">جنيه</span></div>
+              <small class="text-muted" style="font-size: 11px;">تم شراء 900+ سلعة الشهر الماضي</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- هاتف 8: تكنو -->
+        <div class="col-6">
+          <div class="product-card h-100 d-flex flex-column justify-content-between bg-white border rounded p-2" style="cursor: pointer;" onclick="showDetails('تكنو كامون 20 برو، كاميرا مميزة', '10,200', 'https://images.unsplash.com/photo-1523206489230-c012c64b2b48?w=500&auto=format&fit=crop&q=80', '500', 'متجر Tecno')">
+            <div>
+              <div class="position-relative text-center bg-light p-2 rounded">
+                <img src="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?w=300&auto=format&fit=crop&q=80" alt="تكنو" class="img-fluid" style="height: 150px; object-fit: contain;">
+                <button class="position-absolute bottom-0 start-0 btn btn-warning rounded-circle shadow-sm m-2 d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;"><i class="fas fa-plus text-dark"></i></button>
+              </div>
+              <p class="mt-2 mb-1 text-dark" style="font-size: 13px; line-height: 1.4;">تكنو كامون 20 برو، كاميرا مميزة...</p>
+            </div>
+            <div>
+              <div class="fw-bold fs-5 text-dark">10,200 <span style="font-size: 12px; font-weight: normal;">جنيه</span></div>
+              <small class="text-muted" style="font-size: 11px;">تم شراء 2.3 ألف+ سلعة الشهر الماضي</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- قسم صفحة تفاصيل المنتج -->
+    <div id="detailsView" class="bg-white p-3 rounded shadow-sm" style="display: none;">
+      <button class="btn btn-sm btn-outline-secondary mb-3" onclick="showHome()"><i class="fas fa-arrow-right"></i> العودة للرئيسية</button>
+      
+      <p id="detStore" class="text-primary small mb-1" style="cursor: pointer;">قم بزيارة المتجر</p>
+      <h6 id="detTitle" class="fw-bold text-dark" style="font-size: 15px;">عنوان المنتج</h6>
+      
+      <div class="d-flex align-items-center my-2 text-warning" style="font-size: 12px;">
+        <span class="text-dark fw-bold me-1">4.8</span>
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <span id="detReviews" class="text-primary ms-2">(1,250)</span>
+      </div>
+      
+      <div class="bg-warning text-dark p-1 rounded d-inline-block fw-bold mb-2" style="font-size: 11px;">
+        الأكثر مبيعاً <span class="fw-normal">في الهواتف الذكية</span>
+      </div>
+
+      <div class="text-muted small mb-3">تم شراء 1 ألف+ سلعة في الشهر الماضي</div>
+
+      <!-- صورة المنتج الكبيرة -->
+      <div class="text-center bg-light p-3 rounded mb-3">
+        <img id="detImage" src="" alt="تفاصيل الهاتف" class="img-fluid" style="max-height: 300px; object-fit: contain;">
+      </div>
+
+      <hr>
+
+      <!-- السعر -->
+      <div class="mb-3">
+        <span id="detPrice" class="fs-2 fw-bold text-dark">0</span> <span class="text-muted">جنيه</span>
+        <div class="text-muted" style="font-size: 12px;">الأسعار تشمل ضريبة القيمة المضافة.</div>
+      </div>
+
+      <!-- تفاصيل التوصيل -->
+      <div class="alert alert-light border p-2 mb-3" style="font-size: 13px;">
+        <strong>توصيل مجاني</strong> غداً على طلبك.<br>
+        <span class="text-muted"><i class="fas fa-map-marker-alt"></i> التوصيل إلى New Cairo City - تحديث الموقع</span>
+      </div>
+
+      <!-- أزرار الشراء -->
+      <div class="d-grid gap-2">
+        <button class="btn btn-warning py-2 fw-bold rounded-pill">إضافة إلى عربة التسوق</button>
+        <button class="btn py-2 fw-bold rounded-pill text-dark" style="background-color: #ffa41c;" onclick="alert('تم الانتقال لصفحة الدفع الفوري!')">اشتري الآن</button>
+      </div>
+
+      <div class="mt-3 text-muted" style="font-size: 12px;">
+        <div><strong>الشاحن / البائع:</strong> Amazon.eg</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- سكربت التنقل وتحديث تفاصيل المنتج ديناميكياً -->
+  <script>
+    function showDetails(title, price, imgSrc, reviews, store) {
+      // تعبئة بيانات صفحة التفاصيل بناءً على المنتج المختار
+      document.getElementById('detTitle').innerText = title;
+      document.getElementById('detPrice').innerText = price;
+      document.getElementById('detImage').src = imgSrc;
+      document.getElementById('detReviews').innerText = '(' + reviews + ')';
+      document.getElementById('detStore').innerText = 'قم بزيارة ' + store;
+
+      // إخفاء الرئيسية وإظهار التفاصيل
+      document.getElementById('homeView').style.display = 'none';
+      document.getElementById('detailsView').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    function showHome() {
+      document.getElementById('detailsView').style.display = 'none';
+      document.getElementById('homeView').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <!-- الفوتر (Footer) بتصميم أمازون -->
+  <footer class="text-light py-4 mt-4" style="background-color: #131a22; font-size: 13px;">
+    <div class="container">
+      
+      <!-- شبكة الروابط (عمودين زي الصورة) -->
+      <div class="row text-center py-3 border-bottom border-secondary mb-3">
+        
+        <!-- العمود الأيمن -->
+        <div class="col-6">
+          <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
+            <li><a href="#" class="text-light text-decoration-none">مشترياتك</a></li>
+            <li><a href="#" class="text-light text-decoration-none">عناوينك</a></li>
+            <li><a href="#" class="text-light text-decoration-none">أمازون الخاص بك</a></li>
+            <li><a href="#" class="text-light text-decoration-none">ابدأ البيع</a></li>
+            <li><a href="#" class="text-light text-decoration-none">حمايتك أولاً: استرجاع المنتجات غير الآمنة</a></li>
+          </ul>
+        </div>
+
+        <!-- العمود الأيسر -->
+        <div class="col-6">
+          <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
+            <li><a href="#" class="text-light text-decoration-none">حسابك</a></li>
+            <li><a href="#" class="text-light text-decoration-none">الاشتراك والتوفير</a></li>
+            <li><a href="#" class="text-light text-decoration-none">قوائمك</a></li>
+            <li><a href="#" class="text-light text-decoration-none">منتجات تصفحتها مؤخراً</a></li>
+            <li><a href="#" class="text-light text-decoration-none">مرتجعاتك</a></li>
+            <li><a href="#" class="text-light text-decoration-none">خدمة العملاء</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- زر اللغة ودولة مصر -->
+      <div class="d-flex justify-content-center align-items-center gap-3 py-3 border-bottom border-secondary mb-3" style="font-size: 14px;">
+        <div class="border border-light rounded px-3 py-1 d-flex align-items-center gap-2" style="cursor: pointer;">
+          <i class="fas fa-globe"></i>
+          <span>اللغة العربية</span>
+        </div>
+        <div class="border border-light rounded px-3 py-1 d-flex align-items-center gap-2" style="cursor: pointer;">
+          <span>🇪🇬</span>
+          <span>مصر</span>
+        </div>
+      </div>
+
+      <!-- هل أنت مستخدم؟ تسجيل الدخول -->
+      <div class="text-center py-2" style="font-size: 14px;">
+        <span>هل أنت مستخدم؟ </span>
+        <a href="#" class="text-warning text-decoration-none fw-bold">تسجيل الدخول</a>
+      </div>
+
+      <!-- الروابط القانونية وحقوق النشر -->
+      <div class="text-center text-muted mt-3" style="font-size: 11px;">
+        <div class="d-flex justify-content-center gap-3 mb-2 flex-wrap">
+          <a href="#" class="text-muted text-decoration-none">شروط الاستخدام</a>
+          <a href="#" class="text-muted text-decoration-none">إشعار الخصوصية</a>
+          <a href="#" class="text-muted text-decoration-none">إعلانات بحسب الاهتمامات</a>
+        </div>
+        <div>حقوق الطبع والنشر © لعام 1996-2026 محفوظة لشركة Amazon.com أو الشركات التابعة لها</div>
+      </div>
+
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- سكربت Bootstrap 5 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

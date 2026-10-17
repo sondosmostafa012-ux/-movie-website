@@ -1,0 +1,210 @@
+/* الحاوية الأفقية للستوريات */
+.stories-container {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  gap: 5px;
+  padding: 10px;
+}
+
+/* شكل كارت الستوري الطولي */
+.story-card {
+  min-width: 140px !important;
+  max-width: 140px !important;
+  height: 230px !important;
+  flex: 0 0 auto !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  position: relative !important; /* مهم جداً لتثبيت الدائرة بداخله */
+  background-color: #000;
+}
+
+/* صورة الخلفية للستوري */
+.story-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* دائرة البروفايل الصغيرة في الأعلى */
+.story-avatar {
+  position: absolute !important;
+  top: 10px;
+  left: 10px; /* لو واجهتك بالانجليزي وعايزاها يمين استبدلي left بـ right */
+  width: 35px;
+  height: 35px;
+  border-radius: 50% !important;
+  border: 3px solid #0d6efd; /* إطار أزرق مميز حول الصورة مثل فيسبوك */
+  object-fit: cover;
+  background-color: #fff;
+}
+
+
+
+
+
+/* تنسيق اسم صاحبة الاستوري */
+.story-name {
+  position: absolute !important;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  color: #fff !important;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* خلفية داكنة شفافة تحت الاسم عشان يكون واضح فوق الصور الملونة */
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px;
+  border-radius: 6px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* تنسيق نافذة عرض الستوري المنبثقة */
+.story-modal {
+  display: none; /* مخفية افتراضياً وتظهر عند الضغط */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95); /* خلفية سوداء شفافة */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* صورة الاستوري داخل النافذة الكبيرة */
+.story-modal .modal-content {
+  max-width: 90%;
+  max-height: 75vh;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+/* اسم صاحبة الاستوري داخل النافذة */
+.story-modal .modal-caption {
+  color: white;
+  font-size: 18px;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+/* زر إغلاق الاستوري (علامة X) */
+.story-modal .close-modal {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* تنسيق نافذة البوست المنبثقة */
+.post-modal {
+  display: none; /* مخفية افتراضياً */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.post-modal-content {
+  background-color: #242526;
+  color: #fff;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.post-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #393a3b;
+}
+
+.close-post-modal {
+  font-size: 28px;
+  cursor: pointer;
+  color: #b0b3b8;
+}
+
+.post-modal-body {
+  padding: 15px;
+}
+
+.user-info-post {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.post-user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#postTextarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  resize: none;
+  outline: none;
+}
+
+#postTextarea::placeholder {
+  color: #b0b3b8;
+}

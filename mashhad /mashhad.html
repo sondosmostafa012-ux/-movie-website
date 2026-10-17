@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مشهد | بوابتك للسينما</title>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0718;--p:#1b1230;--p2:#2a1d48;--gold:#f2b705;--ink:#f3eefc;--mut:#a79bc4;--line:#32254f;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(900px 500px at 90% -10%,#2a1850,transparent 60%),var(--bg);color:var(--ink);font-family:Tajawal,Tahoma,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}button{font:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.disp{font-family:'Reem Kufi',Tahoma,sans-serif}
+#loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:opacity .5s}
+#loader.hide{opacity:0;pointer-events:none}
+.reel{width:60px;color:var(--gold);animation:spin 1.1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#auth{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:20px;background:var(--bg)}
+.box{width:100%;max-width:370px;background:var(--p);border:1px solid var(--line);border-radius:14px;padding:26px}
+.logo{display:flex;align-items:center;justify-content:center;gap:10px;font-size:1.4rem;margin-bottom:16px}
+.tabs{display:flex;background:var(--bg);border-radius:99px;padding:4px;margin-bottom:16px}
+.tabs button{flex:1;border:0;background:none;color:var(--mut);padding:8px;border-radius:99px;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--gold);color:#1a1106;font-weight:700}
+form{display:flex;flex-direction:column;gap:12px}
+label{font-size:.85rem;color:var(--mut);display:flex;flex-direction:column;gap:5px}
+input{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--ink);font:inherit}
+.btn{background:var(--gold);color:#1a1106;font-weight:700;border:0;padding:11px 22px;border-radius:10px;cursor:pointer}
+.btn2{background:#ffffff14;border:1px solid #ffffff40;color:var(--ink);padding:11px 20px;border-radius:10px;cursor:pointer}
+.guest{margin-top:12px;width:100%;background:none;border:1px dashed var(--line);color:var(--mut);padding:9px;border-radius:10px;cursor:pointer}
+.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:14px;padding:12px 20px;background:#0d0718e6;backdrop-filter:blur(10px);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.nav{display:flex;gap:4px;overflow-x:auto;flex:1;scrollbar-width:none}
+.nav a{flex:none;padding:7px 13px;border-radius:99px;color:var(--mut);font-size:.92rem}
+.nav a.on,.nav a:hover{color:var(--ink);background:var(--p2)}
+.top input{width:140px;border-radius:99px;padding:7px 14px}
+.ghost{background:none;border:1px solid var(--line);color:var(--mut);padding:7px 14px;border-radius:99px;cursor:pointer}
+.hero{position:relative;height:min(74vh,580px);min-height:400px;overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1s;display:flex;align-items:flex-end}
+.slide.on{opacity:1}
+.slide .bg{position:absolute;inset:0}
+.slide .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--bg) 3%,#0d071840 60%),linear-gradient(90deg,#0d0718c0,transparent 60%)}
+.hc{position:relative;padding:0 44px 54px;max-width:620px}
+.hc small{color:var(--gold)}
+.hc h1{font-size:clamp(2rem,5vw,3.2rem);margin:6px 0 10px;line-height:1.15}
+.hc p{color:var(--mut);margin:0 0 20px}
+.hc .row2{display:flex;gap:10px;flex-wrap:wrap}
+.dots{position:absolute;bottom:16px;right:44px;display:flex;gap:7px}
+.dots button{width:8px;height:8px;border-radius:50%;border:0;background:#ffffff4d;padding:0;cursor:pointer}
+.dots button.on{background:var(--gold);width:22px;border-radius:5px}
+.sec{padding:34px 20px 4px;max-width:1300px;margin:0 auto}
+.sh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.sh h2{font-size:1.4rem;margin:0}.sh a{color:var(--gold);font-size:.9rem}
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:160px;gap:14px;overflow-x:auto;padding-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:14px;padding:0 20px 40px;max-width:1300px;margin:0 auto}
+.card{background:var(--p);border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;perspective:600px;animation:rin .6s cubic-bezier(.2,.8,.2,1) both;transition:transform .18s,border-color .18s}
+.card:hover{transform:translateY(-4px);border-color:var(--gold)}
+@keyframes rin{0%{opacity:0;transform:rotateY(65deg) translateX(14px) scale(.85)}100%{opacity:1;transform:none}}
+.poster{aspect-ratio:2/3;display:flex;align-items:flex-end;padding:10px;color:#fff;font-size:1rem;line-height:1.3;text-shadow:0 2px 10px #0009}
+.ci{padding:8px 10px 10px}.ci small{display:block;color:var(--mut);font-size:.78rem}
+.feat{display:flex;gap:26px;padding:34px 20px;max-width:1300px;margin:0 auto;align-items:center;flex-wrap:wrap}
+.feat .poster{width:210px;border-radius:14px;flex:none}
+.feat h1,.det h1{font-size:clamp(1.7rem,4vw,2.5rem);margin:6px 0 10px}
+.feat small,.det small{color:var(--gold)}
+.mut{color:var(--mut)}
+.det{max-width:980px;margin:0 auto;padding:34px 20px 50px;display:flex;gap:28px;flex-wrap:wrap}
+.det .poster{width:250px;border-radius:16px;flex:none}
+.info{flex:1;min-width:260px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
+.tag{background:var(--p2);border:1px solid var(--line);padding:4px 12px;border-radius:99px;font-size:.84rem;color:var(--mut)}
+.vid{margin-top:26px;aspect-ratio:16/9;border-radius:14px;background:var(--p);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden}
+.vid .pl{width:58px;height:58px;border-radius:50%;background:var(--gold);color:#1a1106;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.vid canvas{width:100%;height:100%}
+.empty{text-align:center;color:var(--mut);padding:60px 20px}
+footer{border-top:1px solid var(--line);margin-top:40px;background:#120a22}
+.ft{max-width:1300px;margin:0 auto;padding:40px 20px 24px;display:flex;gap:36px;flex-wrap:wrap}
+.ft>div{flex:1;min-width:130px;display:flex;flex-direction:column;gap:8px}
+.ft>div:first-child{flex:2;min-width:220px}
+.ft h4{margin:0 0 4px;font-size:.85rem;color:var(--mut);font-weight:500}
+.ft a:hover{color:var(--gold)}
+.cp{text-align:center;color:var(--mut);font-size:.82rem;padding:14px;border-top:1px solid var(--line)}
+@media(max-width:640px){.hc{padding:0 20px 44px}.dots{right:20px}.strip{grid-auto-columns:130px}.feat .poster{width:150px}.det .poster{width:180px}}
+@media(prefers-reduced-motion:reduce){.card,.reel{animation:none}.slide{transition:none}}
+</style>
+</head>
+<body>
+<div id="loader"><svg class="reel" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="5"/><circle cx="50" cy="26" r="8" fill="currentColor"/><circle cx="71" cy="62" r="8" fill="currentColor"/><circle cx="29" cy="62" r="8" fill="currentColor"/></svg><div class="disp" style="font-size:1.5rem">مشهد</div></div>
+
+<div id="auth" hidden><div class="box">
+<div class="logo disp"><svg width="38" height="38" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#f2b705"/><path d="M34 28L74 50L34 72Z" fill="#120a1f"/></svg>مشهد</div>
+<div class="tabs"><button id="t1" aria-selected="true">تسجيل الدخول</button><button id="t2" aria-selected="false">حساب جديد</button></div>
+<form id="f1"><label>البريد الإلكتروني<input type="email" required></label><label>كلمة المرور<input type="password" required></label><button class="btn">دخول</button></form>
+<form id="f2" hidden><label>الاسم<input type="text" required></label><label>البريد الإلكتروني<input type="email" required></label><label>كلمة المرور<input type="password" required></label><button class="btn">إنشاء الحساب</button></form>
+<button class="guest" id="guest">الدخول كزائر</button></div></div>
+
+<div id="app" hidden>
+<header class="top"><a href="#/" class="logo disp" style="margin:0;font-size:1.2rem"><svg width="28" height="28" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#f2b705"/><path d="M34 28L74 50L34 72Z" fill="#120a1f"/></svg>مشهد</a>
+<nav class="nav" id="nav"></nav>
+<input id="q" type="search" placeholder="ابحث عن فيلم" aria-label="بحث"><button class="ghost" id="out">خروج</button></header>
+<main id="v"></main>
+<footer><div class="ft"><div><div class="logo disp" style="justify-content:flex-start;margin:0">مشهد</div><p class="mut">أفلام من كل تصنيف في مكان واحد. اختار، شوف التفاصيل، واحفظ اللي يعجبك.</p></div>
+<div><h4>التصنيفات</h4><a href="#/c/دراما">دراما</a><a href="#/c/أنمي">أنمي</a><a href="#/c/خيال علمي">خيال علمي</a><a href="#/c/كوميديا">كوميديا</a><a href="#/c/أكشن">أكشن</a><a href="#/c/كرتون">كرتون</a></div>
+<div><h4>الموقع</h4><a href="#/">الرئيسية</a><a href="#/list">قائمتي</a></div>
+<div><h4>تابعنا</h4><a href="#">فيسبوك</a><a href="#">إكس</a><a href="#">إنستجرام</a></div></div>
+<div class="cp">© مشهد - موقع عرض أفلام تجريبي</div></footer></div>
+
+<script>
+const RAW={
+"دراما":"الكيت كات|1991|112|رجل كفيف يعرف حارته أحسن من أي حد يشوفها.;عمارة يعقوبيان|2006|165|حكايات سكان عمارة وسط البلد عبر أجيال.;أرض الخوف|1999|150|ضابط يتسلل لعالم تجارة المخدرات في مهمة سرية.;واحد تاني|2016|105|علاقة إنسانية بتتوه بين قرارين مصيريين.;ليلة سقوط بغداد|2005|120|بائع يتورط في أحداث ليلة الغزو.;كباريه|2008|110|شخصيات تتقاطع حياتها في ليلة واحدة.;678|2010|100|ثلاث نساء يواجهوا التحرش بطرق مختلفة.;الحرب العالمية الثالثة|2022|104|كومبارس يتحول دوره لحكاية أكبر منه.;تراب الماس|2018|135|صيدلي يتورط في لغز بعد وفاة جده.;الأصليين|2017|140|صراع عيلة كبيرة على الإرث والسلطة.;ولاد العم|2009|130|خلاف عيلي قديم يتجدد بين جيل جديد.;فبراير الأسود|2013|100|ضابط يواجه أزمة أخلاقية صعبة.;هيبتا|2016|135|سبع حكايات حب تتقاطع في رسالة واحدة.;لا مؤاخذة|2014|110|طفل يدخل مدرسة مختلفة ويواجه التمييز.;أسوار القمر|2014|118|علاقة معقدة بين صحفي وامرأة من عالم مختلف",
+"أنمي":"Spirited Away|2001|125|بنت تتوه في عالم أرواح وتشتغل علشان ترجع.;My Neighbor Totoro|1988|86|أختين يتعرفوا على كائن غابة سحري.;Your Name|2016|106|شاب وبنت يبدلوا أجسادهم بشكل غامض.;Princess Mononoke|1997|134|صراع بين البشر والغابة وأرواحها.;Akira|1988|124|عصابة دراجات تواجه قوة خارقة في طوكيو.;Demon Slayer: Mugen Train|2020|117|محاربين يواجهوا شيطان قوي على قطار.;Jujutsu Kaisen 0|2021|105|طالب يكتشف قوته السحرية بعد مأساة.;A Silent Voice|2016|130|شاب يكفّر عن تنمره على زميلة صمّاء.;Weathering with You|2019|112|شاب يتعرف على بنت تتحكم في الطقس.;Grave of the Fireflies|1988|89|أخ وأخته يحاولوا ينجوا وقت الحرب.;One Piece Film: Red|2022|115|حفل غنائي يتحول لمواجهة بين القراصنة.;Howl's Moving Castle|2004|119|بنت تتحول لعجوزة بلعنة وتلجأ لقلعة ساحر.;Attack on Titan: Chronicle|2020|120|ملخص صراع البشرية ضد العمالقة.;Suzume|2022|122|بنت تسافر لتقفل أبواب كارثية غامضة.;The Boy and the Heron|2023|124|ولد يدخل عالم خيالي بعد فقد أمه",
+"خيال علمي":"Inception|2010|148|لصوص أحلام يزرعوا فكرة جوه عقل راجل.;Interstellar|2014|169|رحلة عبر ثقب دودي لإنقاذ البشرية.;The Matrix|1999|136|مبرمج يكتشف إن الواقع وهم رقمي.;Blade Runner 2049|2017|164|محقق يكتشف سر يهدد التوازن بين البشر والمستنسخين.;Arrival|2016|116|عالمة لغويات تتواصل مع كائنات فضائية.;Dune|2021|155|وريث نبيل يتورط في صراع على كوكب صحراوي.;The Martian|2015|144|رائد فضاء يتقطع في المريخ ويحاول ينجو.;Edge of Tomorrow|2014|113|جندي يعيش نفس يوم المعركة مرات ومرات.;Ex Machina|2014|108|مبرمج يختبر وعي روبوت متطور.;District 9|2009|112|كائنات فضائية عالقة على الأرض.;Looper|2012|119|قاتل مأجور يواجه نسخته من المستقبل.;Children of Men|2006|109|عالم بلا أطفال ورحلة لحماية أول حامل.;Gattaca|1997|106|رجل يتحايل على نظام وراثي صارم لحلمه.;Minority Report|2002|145|شرطي يلاحق جرائم قبل ما تحصل.;Elysium|2013|109|صراع بين أرض فقيرة ومحطة فضائية للأغنياء",
+"كوميديا":"الإرهاب والكباب|1992|100|مواطن عادي يتحاصر في مبنى حكومي.;اللمبي|2002|104|شاب بسيط يتورط في مواقف كوميدية متلاحقة.;عسل أسود|2010|128|مصري عايش في أمريكا يرجع بلده ويتفاجئ.;بوشكاش|2008|120|لاعب كورة سابق يحاول يرجع لمجده.;مرجان أحمد مرجان|2007|120|شخصين بنفس الاسم يتبادلوا الأماكن.;تيتو|2004|120|شاب في بيئة إجرام يحاول ياخد طريق تاني.;حرامية في كي جي تو|2006|115|لصين يحاولوا يسرقوا حضانة أطفال.;سمير وشهير وبهير|2004|120|ثلاث إخوة توأم بشخصيات مختلفة.;فول الصين العظيم|2004|115|شاب مصري يسافر الصين بحثا عن فرصة.;Mr. Bean's Holiday|2007|89|مستر بين في رحلة مليانة مواقف غريبة.;The Grand Budapest Hotel|2014|99|مدير فندق فخم يتورط في سرقة عمل فني.;Superbad|2007|113|صاحبين يحاولوا يحضروا حفلة قبل التخرج.;The Hangover|2009|100|أصحاب يصحوا بعد ليلة من غير ما يفتكروا.;Bridesmaids|2011|125|صديقة تنظم حفلة عزوبية وسط كوارث.;Game Night|2018|100|ليلة ألعاب تتحول لمغامرة حقيقية",
+"أكشن":"ولاد رزق|2015|130|أربع إخوات يخططوا لعملية سرقة جريئة.;كيرة والجن|2022|165|مواجهة بين مقاومين ورجل إنجليزي نفوذه قوي.;الجزيرة|2007|150|زعيم تهريب يسيطر على جزيرة بعيدة.;موسى|2021|110|مطاردة خطيرة في عالم الجاسوسية.;الممر|2019|133|جنود مصريين في مهمة استطلاع خطيرة بعد 1967.;Mad Max: Fury Road|2015|120|مطاردة ضخمة في صحراء ما بعد الكارثة.;John Wick|2014|101|قاتل محترف يرجع للإجرام بعد خسارة مؤلمة.;Die Hard|1988|132|شرطي واحد يواجه إرهابيين في ناطحة سحاب.;The Dark Knight|2008|152|باتمان يواجه الجوكر في جوثام.;Mission: Impossible - Fallout|2018|147|عميل يحاول يمنع كارثة نووية.;Gladiator|2000|155|جنرال روماني يتحول لمحارب مبارزات للثأر.;The Raid|2011|101|فريق شرطة محاصر في عمارة مجرمين.;Top Gun: Maverick|2022|131|طيار يدرّب جيل جديد لمهمة خطيرة.;Extraction|2020|116|مرتزق ينقذ ابن تاجر مخدرات.;The Raid 2|2014|150|شرطي متخفي جوه عصابة إجرام",
+"كرتون":"Toy Story|1995|81|لعبة كاوبوي تغير من لعبة رائد فضاء جديدة.;Up|2009|96|عجوز يطير ببيته بالبالونات لحلم قديم.;Coco|2017|105|ولد يدخل عالم الموتى يدور على جده.;Zootopia|2016|108|أرنبة بوليسية تحقق في قضية غامضة.;Finding Nemo|2003|100|سمكة أب تدور على ابنها في المحيط.;The Lion King|1994|88|شبل أسد يرجع يسترد مملكته.;Shrek|2001|90|غول ينقذ أميرة علشان ياخد غابته.;Inside Out|2015|95|مشاعر بنت صغيرة تتصارع جواها.;How to Train Your Dragon|2010|98|فايكنج يصاحب تنين بدل ما يحاربه.;Moana|2016|107|بنت تسافر في البحر لتنقذ جزيرتها.;Kung Fu Panda|2008|92|باندا كسول يتحول لمحارب أسطوري.;Ratatouille|2007|111|فأر يحلم يبقى شيف في مطعم فاخر.;Wall-E|2008|98|روبوت وحيد على الأرض يلاقي رفيقة.;Frozen|2013|102|أميرة بقوة تجميد تهرب من مملكتها.;Luca|2021|95|وحش بحري صغير يكتشف عالم فوق الماء"
+};
+const CATS=Object.keys(RAW),ALL=[];
+CATS.forEach((c,ci)=>RAW[c].split(";").forEach((s,i)=>{const[t,y,m,syn]=s.split("|");ALL.push({t,y:+y,m:+m,syn,c,h:(ci*58+i*23)%360})}));
+const $=id=>document.getElementById(id);
+const grad=h=>`linear-gradient(160deg,hsl(${h} 60% 30%),hsl(${(h+40)%360} 55% 12%))`;
+let list={};try{list=JSON.parse(localStorage.getItem("mh_list")||"{}")}catch(e){}
+const saveList=()=>{try{localStorage.setItem("mh_list",JSON.stringify(list))}catch(e){}};
+let authed=false;try{authed=sessionStorage.getItem("mh_auth")==="1"}catch(e){}
+const enc=encodeURIComponent,key=m=>m.c+"|"+m.t;
+const card=(m,i)=>`<article class="card" style="animation-delay:${Math.min(i*.05,.5)}s" data-k="${enc(key(m))}"><div class="poster disp" style="background:${grad(m.h)}">${m.t}</div><div class="ci"><strong>${m.t}</strong><small>${m.y} · ${m.m} د</small></div></article>`;
+const wire=()=>document.querySelectorAll(".card").forEach(e=>e.onclick=()=>location.hash="#/m/"+e.dataset.k);
+function enter(){authed=true;try{sessionStorage.setItem("mh_auth","1")}catch(e){}$("auth").hidden=true;$("app").hidden=false;$("nav").innerHTML=CATS.map(c=>`<a href="#/c/${enc(c)}" data-c="${c}">${c}</a>`).join("")+`<a href="#/list" data-c="list">قائمتي</a>`;route()}
+setTimeout(()=>{$("loader").classList.add("hide");authed?enter():$("auth").hidden=false},1100);
+$("t1").onclick=$("t2").onclick=e=>{const a=e.target.id==="t1";$("t1").setAttribute("aria-selected",a);$("t2").setAttribute("aria-selected",!a);$("f1").hidden=!a;$("f2").hidden=a};
+$("f1").onsubmit=$("f2").onsubmit=e=>{e.preventDefault();enter()};
+$("guest").onclick=enter;
+$("out").onclick=()=>{authed=false;try{sessionStorage.removeItem("mh_auth")}catch(e){}$("app").hidden=true;$("auth").hidden=false};
+$("q").oninput=e=>{const v=e.target.value.trim();if(v)location.hash="#/s/"+enc(v)};
+let timer;
+function home(){
+  const picks=[...ALL].sort((a,b)=>b.y-a.y).slice(0,5);
+  $("v").innerHTML=`<section class="hero">${picks.map((m,i)=>`<div class="slide${i?"":" on"}"><div class="bg" style="background:${grad(m.h)}"></div><div class="hc"><small>${m.c} · ${m.y}</small><h1 class="disp">${m.t}</h1><p>${m.syn}</p><div class="row2"><button class="btn" data-k="${enc(key(m))}">تفاصيل الفيلم</button><a class="btn2" href="#/c/${enc(m.c)}">كل أفلام ${m.c}</a></div></div></div>`).join("")}<div class="dots">${picks.map((_,i)=>`<button class="${i?"":"on"}" aria-label="شريحة ${i+1}"></button>`).join("")}</div></section>`+
+  CATS.map(c=>`<section class="sec"><div class="sh"><h2 class="disp">${c}</h2><a href="#/c/${enc(c)}">عرض الكل</a></div><div class="strip">${ALL.filter(m=>m.c===c).slice(0,10).map(card).join("")}</div></section>`).join("");
+  wire();document.querySelectorAll(".hc .btn").forEach(b=>b.onclick=()=>location.hash="#/m/"+b.dataset.k);
+  const s=document.querySelectorAll(".slide"),d=document.querySelectorAll(".dots button");let i=0;
+  const go=n=>{i=n;s.forEach((x,j)=>x.classList.toggle("on",j===i));d.forEach((x,j)=>x.classList.toggle("on",j===i))};
+  const rs=()=>{clearInterval(timer);timer=setInterval(()=>go((i+1)%s.length),5000)};
+  d.forEach((b,j)=>b.onclick=()=>{go(j);rs()});rs();
+}
+function cat(c){
+  const l=ALL.filter(m=>m.c===c);if(!l.length)return $("v").innerHTML=`<div class="empty">التصنيف مش موجود.</div>`;
+  const f=l[0];
+  $("v").innerHTML=`<section class="feat"><div class="poster disp" style="background:${grad(f.h)}">${f.t}</div><div style="flex:1;min-width:240px"><small>فيلم مميز في ${c}</small><h1 class="disp">${f.t}</h1><p class="mut">${f.syn}</p><p class="mut">${f.y} · ${f.m} دقيقة</p><button class="btn" data-k="${enc(key(f))}">تفاصيل الفيلم</button></div></section><div class="sec"><div class="sh"><h2 class="disp">باقي أفلام ${c}</h2></div></div><div class="grid">${l.slice(1).map(card).join("")}</div>`;
+  wire();document.querySelector(".feat .btn").onclick=e=>location.hash="#/m/"+e.target.dataset.k;
+}
+function grid(title,l,msg){$("v").innerHTML=`<div class="sec"><h1 class="disp">${title}</h1><p class="mut">${l.length} فيلم</p></div>${l.length?`<div class="grid">${l.map(card).join("")}</div>`:`<div class="empty">${msg}</div>`}`;wire()}
+function movie(k){
+  const m=ALL.find(x=>key(x)===k);if(!m)return $("v").innerHTML=`<div class="empty">الفيلم مش موجود.</div>`;
+  const on=!!list[k];
+  $("v").innerHTML=`<div class="det"><div class="poster disp" style="background:${grad(m.h)}">${m.t}</div><div class="info"><small>${m.c}</small><h1 class="disp">${m.t}</h1><div class="tags"><span class="tag">${m.y}</span><span class="tag">${m.m} دقيقة</span></div><p>${m.syn}</p><button class="btn" id="lb">${on?"في قائمتي ✓":"أضف لقائمتي"}</button> <a class="btn2" href="#/c/${enc(m.c)}">أفلام ${m.c} تانية</a><h3 class="disp" style="margin-top:26px">مقطع تعريفي</h3><div class="vid" id="vid" role="button" tabindex="0" aria-label="تشغيل المقطع"><div class="pl">▶</div></div></div></div>`;
+  $("lb").onclick=()=>{list[k]=!list[k];saveList();$("lb").textContent=list[k]?"في قائمتي ✓":"أضف لقائمتي"};
+  const v=$("vid"),play=()=>{if(v.querySelector("canvas"))return;v.innerHTML="<canvas></canvas>";teaser(v.firstChild,m)};
+  v.onclick=play;v.onkeydown=e=>{if(e.key==="Enter")play()};
+}
+function teaser(cv,m){
+  cv.width=cv.clientWidth;cv.height=cv.clientHeight;const x=cv.getContext("2d");
+  const P=Array.from({length:70},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*2+.5,s:Math.random()*.7+.2}));
+  const rm=matchMedia("(prefers-reduced-motion:reduce)").matches;let t=0;
+  (function f(){
+    x.fillStyle=`hsl(${m.h} 45% 8%)`;x.fillRect(0,0,cv.width,cv.height);
+    const g=x.createLinearGradient(0,0,cv.width,cv.height);g.addColorStop(0,`hsla(${m.h},60%,32%,.55)`);g.addColorStop(1,`hsla(${(m.h+60)%360},60%,18%,.4)`);x.fillStyle=g;x.fillRect(0,0,cv.width,cv.height);
+    P.forEach(p=>{x.fillStyle="rgba(242,183,5,.5)";x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill();if(!rm){p.y-=p.s;if(p.y<-5)p.y=cv.height+5}});
+    x.fillStyle="#f3eefc";x.textAlign="center";x.font="700 "+Math.max(18,cv.width/16)+"px 'Reem Kufi',sans-serif";x.fillText(m.t,cv.width/2,cv.height/2);
+    x.font="400 14px Tajawal,sans-serif";x.fillStyle="#a79bc4";x.fillText("هنا يتحط التريلر الحقيقي",cv.width/2,cv.height/2+30);
+    if(!rm&&cv.isConnected)requestAnimationFrame(f);
+  })();
+}
+function route(){
+  if(!authed)return;clearInterval(timer);
+  const p=location.hash.replace(/^#\/?/,"").split("/").filter(Boolean).map(decodeURIComponent);
+  document.querySelectorAll(".nav a").forEach(a=>a.classList.toggle("on",a.dataset.c===(p[0]==="c"?p[1]:p[0]==="list"?"list":"")));
+  scrollTo(0,0);
+  if(p[0]==="c")cat(p[1]);
+  else if(p[0]==="m")movie(p[1]);
+  else if(p[0]==="s"){const q=p[1].toLowerCase();grid("نتائج «"+p[1]+"»",ALL.filter(m=>m.t.toLowerCase().includes(q)),"مفيش نتائج. جرّب اسم تاني.")}
+  else if(p[0]==="list")grid("قائمتي",ALL.filter(m=>list[key(m)]),"لسه مفيش أفلام. ادخل على أي فيلم ودوس «أضف لقائمتي».");
+  else home();
+}
+addEventListener("hashchange",route);
+</script>
+</body>
+</html>
